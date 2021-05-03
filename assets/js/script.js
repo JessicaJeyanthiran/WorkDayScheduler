@@ -20,7 +20,18 @@ for (var i=9;i<18;i++){
         $(".hour").eq(index).next().addClass("future");
     }
     
-}
+};
 
+function saveTasks() {
+    //everytime save is clicked, saved the task + hour into taskPlanner object.
+    $(".saveBtn").on("click", function() {
+        var value = $(this).siblings(".task").val();
+        var timeOfHour = $(this).parent().attr("id");
 
+        saveEvent.push({
+            task: value, time: timeOfHour
+        });
+        localStorage.setItem("saveEvent", JSON.stringify(saveEvent));
+  });
+};
 
